@@ -1,0 +1,1753 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- SEO Meta Tags -->
+    <title>MACIO - Enterprise Dashboards & Web Apps | Shaik Mujeeb</title>
+    <meta
+      name="description"
+      content="MACIO specializes in enterprise dashboards, web applications, landing pages, and digital solutions. Based in Bengaluru."
+    />
+    <meta
+      name="keywords"
+      content="web development, dashboards, Veeva CRM, Salesforce, React, landing pages, portfolio"
+    />
+    <meta name="author" content="Shaik Mujeeb" />
+    <meta name="theme-color" content="#1a1a2e" />
+    <meta
+      property="og:title"
+      content="MACIO - Enterprise Dashboards & Web Apps"
+    />
+    <meta
+      property="og:description"
+      content="Building scalable web solutions for enterprise clients."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://macio.dev" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="MACIO - Enterprise Dashboards & Web Apps"
+    />
+
+    <!-- Security Headers (CSP) -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https:; connect-src 'self' https://formspree.io;"
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='8' y='8' width='14' height='48' fill='%231a1a2e' rx='2'/%3E%3Crect x='26' y='8' width='14' height='48' fill='%231a1a2e' rx='2'/%3E%3Crect x='44' y='20' width='12' height='36' fill='%230f766e' rx='2'/%3E%3C/svg%3E"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --color-primary: #1a1a2e;
+        --color-primary-light: #2d3561;
+        --color-accent: #0f766e;
+        --color-accent-light: #1a9f8f;
+        --color-bg-light: #ffffff;
+        --color-bg-dark: #f8f9fa;
+        --color-text-light: #2d2d2d;
+        --color-text-light-secondary: #666666;
+        --color-text-light-tertiary: #999999;
+        --color-border-light: #e0e0e0;
+        --color-success: #27ae60;
+        --color-error: #e74c3c;
+        --color-warning: #f39c12;
+        --border-radius: 12px;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      [data-theme="dark"] {
+        --color-bg-light: #1a1a1e;
+        --color-bg-dark: #252530;
+        --color-text-light: #ffffff;
+        --color-text-light-secondary: #b0b0b0;
+        --color-text-light-tertiary: #808080;
+        --color-border-light: #404050;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+          "Ubuntu", "Cantarell", sans-serif;
+        background: var(--color-bg-light);
+        color: var(--color-text-light);
+        line-height: 1.6;
+        transition: var(--transition);
+        overflow-x: hidden;
+      }
+
+      /* Typography */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      h3 {
+        font-size: 1.5rem;
+      }
+      h4 {
+        font-size: 1.25rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+        color: var(--color-text-light-secondary);
+      }
+
+      a {
+        color: var(--color-accent);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      a:hover {
+        color: var(--color-accent-light);
+      }
+
+      .service-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .logo svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      /* Utilities */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      .section {
+        padding: 4rem 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: var(--color-accent);
+        margin: 1rem auto 0;
+        border-radius: 2px;
+        animation: slideInUp 0.6s ease;
+      }
+
+      /* Navbar */
+      .navbar {
+        position: sticky;
+        top: 0;
+        background: var(--color-bg-light);
+        border-bottom: 1px solid var(--color-border-light);
+        z-index: 1000;
+        transition: var(--transition);
+        backdrop-filter: blur(10px);
+        background: rgba(var(--color-bg-light-rgb), 0.95);
+      }
+
+      .navbar-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: var(--color-primary);
+        transition: var(--transition);
+      }
+
+      .logo:hover {
+        color: var(--color-accent);
+      }
+
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--color-bg-light);
+        border-bottom: 1px solid var(--color-border-light);
+        padding: 1rem;
+        list-style: none;
+        animation: slideDown 0.3s ease;
+      }
+
+      .nav-menu.active {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-menu li a {
+        color: var(--color-text-light);
+        transition: var(--transition);
+        display: block;
+        padding: 0.5rem 0;
+      }
+
+      .nav-menu li a:hover {
+        color: var(--color-accent);
+        padding-left: 0.5rem;
+      }
+
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .theme-toggle,
+      .menu-toggle,
+      .variant-toggle {
+        background: none;
+        border: 1px solid var(--color-border-light);
+        padding: 0.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: var(--transition);
+        color: var(--color-text-light);
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        text-decoration: none;
+      }
+
+      .theme-toggle:hover,
+      .menu-toggle:hover,
+      .variant-toggle:hover {
+        background: var(--color-bg-dark);
+        border-color: var(--color-accent);
+      }
+
+      @media (min-width: 768px) {
+        .nav-menu {
+          display: flex;
+          position: static;
+          background: transparent;
+          border: none;
+          padding: 0;
+          gap: 2rem;
+          flex-direction: row;
+          animation: none;
+        }
+
+        .menu-toggle {
+          display: none;
+        }
+
+        h1 {
+          font-size: 3.5rem;
+        }
+        h2 {
+          font-size: 2.5rem;
+        }
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(
+          135deg,
+          var(--color-bg-light) 0%,
+          var(--color-bg-dark) 100%
+        );
+        padding-top: 80px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          var(--color-accent) 0%,
+          transparent 70%
+        );
+        opacity: 0.05;
+        border-radius: 50%;
+        animation: float 8s ease-in-out infinite;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .hero-text h1 {
+        margin-bottom: 1rem;
+        animation: slideInUp 0.8s ease 0.2s both;
+      }
+
+      .hero-text p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        animation: slideInUp 0.8s ease 0.4s both;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        animation: slideInUp 0.8s ease 0.6s both;
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        border: none;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary {
+        background: var(--color-accent);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: var(--color-accent-light);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(15, 118, 110, 0.3);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--color-accent);
+        border: 2px solid var(--color-accent);
+      }
+
+      .btn-secondary:hover {
+        background: var(--color-accent);
+        color: white;
+      }
+
+      .hero-illustration {
+        display: none;
+        animation: slideInRight 0.8s ease 0.3s both;
+      }
+
+      @media (min-width: 768px) {
+        .hero-content {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .hero-illustration {
+          display: block;
+          width: 100%;
+          height: 400px;
+          background: linear-gradient(
+            135deg,
+            var(--color-accent) 0%,
+            var(--color-primary) 100%
+          );
+          border-radius: 16px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .hero-illustration::before {
+          content: "";
+          position: absolute;
+          top: 20%;
+          left: 20%;
+          width: 60%;
+          height: 60%;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 50%;
+          animation: pulse 3s ease-in-out infinite;
+        }
+      }
+
+      /* Services Section */
+      .services-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .service-card {
+        background: var(--color-bg-light);
+        border: 1px solid var(--color-border-light);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--color-accent),
+          var(--color-accent-light)
+        );
+        transition: var(--transition);
+      }
+
+      .service-card:hover {
+        border-color: var(--color-accent);
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(15, 118, 110, 0.15);
+      }
+
+      .service-card:hover::before {
+        left: 0;
+      }
+
+      .service-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(
+          135deg,
+          var(--color-accent),
+          var(--color-accent-light)
+        );
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .service-card h3 {
+        color: var(--color-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .services-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* About Section */
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .about-text h2 {
+        color: var(--color-primary);
+      }
+
+      .about-image {
+        width: 100%;
+        height: 300px;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        border-radius: var(--border-radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 4rem;
+        animation: slideInUp 0.8s ease;
+      }
+
+      .skills-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .skill {
+        background: var(--color-bg-dark);
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 4px solid var(--color-accent);
+        font-weight: 500;
+      }
+
+      @media (min-width: 768px) {
+        .about-content {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .skills-list {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* Projects Section */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .project-card {
+        background: var(--color-bg-light);
+        border: 1px solid var(--color-border-light);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        transition: var(--transition);
+        animation: fadeInUp 0.6s ease forwards;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-image {
+        width: 100%;
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .project-card:hover .project-image img {
+        transform: scale(1.05);
+      }
+
+      .project-image::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2)
+        );
+        transition: var(--transition);
+      }
+
+      .project-card:hover .project-image::after {
+        left: 100%;
+      }
+
+      .project-info {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-card h3 {
+        color: var(--color-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .project-tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-top: auto;
+        padding-top: 1rem;
+        border-top: 1px solid var(--color-border-light);
+      }
+
+      .tag {
+        background: var(--color-accent);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .project-card:hover {
+        border-color: var(--color-accent);
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(15, 118, 110, 0.15);
+      }
+
+      @media (min-width: 768px) {
+        .projects-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .projects-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* Contact Section */
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        background: var(--color-bg-light);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        border: 1px solid var(--color-border-light);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--color-text-light);
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid var(--color-border-light);
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: var(--transition);
+        background: var(--color-bg-dark);
+        color: var(--color-text-light);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .form-error {
+        color: var(--color-error);
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        display: none;
+      }
+
+      .form-group.error input,
+      .form-group.error textarea {
+        border-color: var(--color-error);
+      }
+
+      .form-group.error .form-error {
+        display: block;
+      }
+
+      .form-submit {
+        width: 100%;
+        padding: 0.75rem;
+        background: var(--color-accent);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .form-submit:hover {
+        background: var(--color-accent-light);
+        transform: translateY(-2px);
+      }
+
+      .form-success {
+        background: rgba(39, 174, 96, 0.1);
+        border: 1px solid var(--color-success);
+        color: var(--color-success);
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        display: none;
+      }
+
+      .form-success.show {
+        display: block;
+        animation: slideInDown 0.3s ease;
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--color-bg-dark);
+        color: var(--color-text-light);
+        padding: 3rem 0 1rem;
+        border-top: 1px solid var(--color-border-light);
+        margin-top: 4rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-section h3 {
+        color: var(--color-primary);
+        margin-bottom: 1rem;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-section a {
+        color: var(--color-text-light-secondary);
+      }
+
+      .footer-section a:hover {
+        color: var(--color-accent);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-links a {
+        width: 40px;
+        height: 40px;
+        background: var(--color-bg-light);
+        border: 1px solid var(--color-border-light);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        background: var(--color-accent);
+        border-color: var(--color-accent);
+        color: white;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid var(--color-border-light);
+        color: var(--color-text-light-tertiary);
+        font-size: 0.9rem;
+      }
+
+      @media (min-width: 768px) {
+        .footer-content {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* WhatsApp Button */
+      .whatsapp-button {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 56px;
+        height: 56px;
+        background: #25d366;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+        z-index: 999;
+        animation: slideInUp 0.6s ease 1s both;
+      }
+
+      .whatsapp-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+      }
+
+      @media (max-width: 768px) {
+        .whatsapp-button {
+          bottom: 1rem;
+          right: 1rem;
+        }
+      }
+
+      /* Animations */
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(20px);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      /* Stagger animation */
+      .service-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .service-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .service-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .service-card:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .service-card:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .service-card:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+
+      .project-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .project-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .project-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      /* Accessibility */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+
+      /* Loading & Error States */
+      .loading {
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      .spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid var(--color-border-light);
+        border-top-color: var(--color-accent);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-content">
+          <a href="#" class="logo">
+            <svg
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="8"
+                y="8"
+                width="14"
+                height="48"
+                fill="currentColor"
+                rx="2"
+              />
+              <rect
+                x="26"
+                y="8"
+                width="14"
+                height="48"
+                fill="currentColor"
+                rx="2"
+              />
+              <rect
+                x="44"
+                y="20"
+                width="12"
+                height="36"
+                fill="#0f766e"
+                rx="2"
+              />
+            </svg>
+            MACIO
+          </a>
+
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+
+          <div class="nav-controls">
+            <a
+              href="index.html"
+              class="variant-toggle"
+              title="Switch to Main Variant"
+              aria-label="Switch to main variant"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                width="20"
+                height="20"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="9" y1="21" x2="9" y2="9"></line></svg
+            ></a>
+            <button
+              class="theme-toggle"
+              id="themeToggle"
+              aria-label="Toggle dark mode"
+              title="Toggle theme"
+            ></button>
+            <button
+              class="menu-toggle"
+              id="menuToggle"
+              aria-label="Toggle menu"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                width="20"
+                height="20"
+              >
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Enterprise Dashboards & Web Apps</h1>
+            <p>
+              Crafting scalable, beautiful web solutions for modern businesses.
+              Veeva CRM, Salesforce, React & more.
+            </p>
+            <div class="hero-buttons">
+              <a href="#contact" class="btn btn-primary">Get Started</a>
+              <a href="#projects" class="btn btn-secondary">View Work</a>
+            </div>
+          </div>
+          <div class="hero-illustration">
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop"
+              alt="Enterprise Analytics Dashboard"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Services</h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3>Web Applications</h3>
+            <p>
+              Full-stack web apps built with React, Node.js, and modern cloud
+              infrastructure.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="9" y1="21" x2="9" y2="9"></line>
+              </svg>
+            </div>
+            <h3>Landing Pages</h3>
+            <p>
+              High-converting landing pages optimized for performance, SEO, and
+              user engagement.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <h3>Portfolio Websites</h3>
+            <p>
+              Beautiful, professional portfolios that showcase your work and
+              attract clients.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3>Enterprise Dashboards</h3>
+            <p>
+              Custom dashboards for Veeva CRM, Salesforce, and analytics
+              platforms at scale.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="3"></circle>
+                <path
+                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+                ></path>
+              </svg>
+            </div>
+            <h3>Maintenance & Support</h3>
+            <p>
+              Ongoing support, bug fixes, and feature updates for your web
+              properties.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.71-2.13.71-2.13l-1.58-1.58s-1.29 0-2.13.71zm9.44-9.44l-6.32 6.32c-1.4 1.4-1.4 3.68 0 5.08l1.08 1.08c1.4 1.4 3.68 1.4 5.08 0l6.32-6.32c1.4-1.4 1.4-3.68 0-5.08l-1.08-1.08c-1.4-1.4-3.68-1.4-5.08 0zM15 5l-1-1 4-4 1 1-4 4zm4 4l-1-1 4-4 1 1-4 4z"
+                ></path>
+              </svg>
+            </div>
+            <h3>Hosting & SEO</h3>
+            <p>
+              Complete hosting solutions with SEO optimization and performance
+              monitoring.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About Me</h2>
+        </div>
+        <div class="about-content">
+          <div class="about-image">
+            <img
+              src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=200&w=260&auto=format&fit=crop"
+              alt="Shaik Mujeeb"
+            />
+          </div>
+          <div class="about-text">
+            <p>
+              Hi! I'm <strong>Shaik Mujeeb</strong>, a software engineer
+              passionate about building enterprise-grade web solutions. With
+              experience in Veeva CRM, Salesforce dashboards, and modern React
+              applications, I deliver scalable solutions that drive results.
+            </p>
+            <p>
+              Based in Bengaluru, I work with clients globally to transform
+              their digital vision into reality. Whether it's a complex
+              dashboard or a beautiful landing page, I bring technical precision
+              and creative problem-solving to every project.
+            </p>
+            <div class="skills-list">
+              <div class="skill">React.js</div>
+              <div class="skill">Node.js</div>
+              <div class="skill">Veeva CRM</div>
+              <div class="skill">Salesforce</div>
+              <div class="skill">AWS</div>
+              <div class="skill">TypeScript</div>
+              <div class="skill">Web Design</div>
+              <div class="skill">Performance</div>
+              <div class="skill">SEO</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-title">
+          <h2>Recent Projects</h2>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-image">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop"
+                alt="Veeva Dashboard"
+              />
+            </div>
+            <div class="project-info">
+              <h3>Veeva Dashboard</h3>
+              <p>
+                Enterprise dashboard for pharmaceutical field teams with
+                real-time analytics and performance tracking.
+              </p>
+              <div class="project-tags">
+                <span class="tag">React</span>
+                <span class="tag">Veeva</span>
+                <span class="tag">Dashboard</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-image">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop"
+                alt="Landing Page Showcase"
+              />
+            </div>
+            <div class="project-info">
+              <h3>Landing Page</h3>
+              <p>
+                High-converting SaaS landing page with smooth animations and
+                mobile optimization.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">Design</span>
+                <span class="tag">SEO</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-image">
+              <img
+                src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1200&auto=format&fit=crop"
+                alt="Analytics Platform"
+              />
+            </div>
+            <div class="project-info">
+              <h3>Analytics Platform</h3>
+              <p>
+                Real-time data visualization platform processing millions of
+                records with sub-second performance.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Svelte</span>
+                <span class="tag">Analytics</span>
+                <span class="tag">Performance</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Get In Touch</h2>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-success" id="formSuccess">
+            ✓ Message sent successfully! I'll get back to you soon.
+          </div>
+
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required />
+            <div class="form-error">Please enter your name</div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required />
+            <div class="form-error">Please enter a valid email</div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required />
+            <div class="form-error">Please enter a subject</div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+            <div class="form-error">Please enter your message</div>
+          </div>
+
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>MACIO</h3>
+            <p>Enterprise dashboards and web applications built for scale.</p>
+            <div class="social-links">
+              <a
+                href="https://github.com/mujeebshk"
+                title="GitHub"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  width="20"
+                  height="20"
+                >
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://linkedin.com/in/mujeebshaik-in"
+                title="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  width="20"
+                  height="20"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                  ></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+              <a
+                href="https://twitter.com/macio_dev"
+                title="Twitter"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  width="20"
+                  height="20"
+                >
+                  <path
+                    d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.2-18 11.6 7.2.1 10.2-4.1 10.2-4.1-9.4 0-10.2-8.2-10.2-8.2 3 0 3.7 1 3.7 1-10.4 0-10.2-9.1-10.2-9.1 2.8 1.1 4.5 1.1 4.5 1.1-6-7.8 1.1-10.3 1.1-10.3 8.3 10.1 18.6 10.1 18.6 10.1z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3>Services</h3>
+            <ul>
+              <li><a href="#services">Web Applications</a></li>
+              <li><a href="#services">Landing Pages</a></li>
+              <li><a href="#services">Dashboards</a></li>
+              <li><a href="#services">Maintenance</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Contact</h3>
+            <ul>
+              <li><a href="mailto:hello@macio.dev">Email</a></li>
+              <li><a href="tel:+918520930031">Phone</a></li>
+              <li><a href="#contact">Contact Form</a></li>
+              <li>
+                <a
+                  href="https://wa.me/918520930031"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >WhatsApp</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 MACIO. All rights reserved. | Built with care by Mujeeb
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a
+      href="https://wa.me/918520930031?text=Hi%20Shaik%2C%20I%20would%20like%20to%20discuss%20a%20project"
+      class="whatsapp-button"
+      title="Chat on WhatsApp"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        width="24"
+        height="24"
+      >
+        <path
+          d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+        ></path>
+      </svg>
+    </a>
+
+    <script>
+      // ==================== Theme Manager ====================
+      class ThemeManager {
+        constructor() {
+          this.theme = localStorage.getItem("theme") || "light";
+          this.toggleBtn = document.getElementById("themeToggle");
+          this.init();
+        }
+
+        init() {
+          this.apply();
+          this.toggleBtn.addEventListener("click", () => this.toggle());
+        }
+
+        apply() {
+          document.documentElement.setAttribute("data-theme", this.theme);
+          this.toggleBtn.innerHTML =
+            this.theme === "dark"
+              ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>'
+              : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+        }
+
+        toggle() {
+          this.theme = this.theme === "light" ? "dark" : "light";
+          localStorage.setItem("theme", this.theme);
+          this.apply();
+        }
+      }
+
+      // ==================== Menu Manager ====================
+      class MenuManager {
+        constructor() {
+          this.menu = document.getElementById("navMenu");
+          this.toggle = document.getElementById("menuToggle");
+          this.links = this.menu.querySelectorAll("a");
+          this.init();
+        }
+
+        init() {
+          this.toggle.addEventListener("click", () => this.toggleMenu());
+          this.links.forEach((link) => {
+            link.addEventListener("click", () => this.closeMenu());
+          });
+        }
+
+        toggleMenu() {
+          this.menu.classList.toggle("active");
+        }
+
+        closeMenu() {
+          this.menu.classList.remove("active");
+        }
+      }
+
+      // ==================== Form Manager ====================
+      class FormManager {
+        constructor() {
+          this.form = document.getElementById("contactForm");
+          this.success = document.getElementById("formSuccess");
+          this.init();
+        }
+
+        init() {
+          this.form.addEventListener("submit", (e) => this.handleSubmit(e));
+        }
+
+        validateEmail(email) {
+          const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return regex.test(email);
+        }
+
+        validateForm() {
+          const fields = this.form.querySelectorAll("[name]");
+          let isValid = true;
+
+          fields.forEach((field) => {
+            const group = field.closest(".form-group");
+            const value = field.value.trim();
+
+            if (!value) {
+              group.classList.add("error");
+              isValid = false;
+            } else if (field.name === "email" && !this.validateEmail(value)) {
+              group.classList.add("error");
+              isValid = false;
+            } else {
+              group.classList.remove("error");
+            }
+          });
+
+          return isValid;
+        }
+
+        sanitizeInput(str) {
+          const div = document.createElement("div");
+          div.textContent = str;
+          return div.innerHTML;
+        }
+
+        async handleSubmit(e) {
+          e.preventDefault();
+
+          if (!this.validateForm()) {
+            return;
+          }
+
+          const formData = new FormData(this.form);
+          const name = this.sanitizeInput(formData.get("name"));
+          const data = {
+            name: name,
+            email: this.sanitizeInput(formData.get("email")),
+            message: this.sanitizeInput(formData.get("message")),
+            _subject: `New Message from ${name} (Portfolio)`,
+          };
+
+          try {
+            const submitBtn = this.form.querySelector(".form-submit");
+            submitBtn.classList.add("loading");
+            submitBtn.disabled = true;
+
+            const response = await fetch("https://formspree.io/f/mlgaazdv", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data),
+            });
+
+            if (!response.ok) throw new Error("Submission failed");
+
+            this.success.classList.add("show");
+            this.form.reset();
+
+            setTimeout(() => {
+              this.success.classList.remove("show");
+            }, 5000);
+
+            submitBtn.classList.remove("loading");
+            submitBtn.disabled = false;
+
+            console.log("Form submitted:", data);
+          } catch (error) {
+            console.error("Form submission error:", error);
+            const submitBtn = this.form.querySelector(".form-submit");
+            if (submitBtn) {
+              submitBtn.classList.remove("loading");
+              submitBtn.disabled = false;
+            }
+          }
+        }
+      }
+
+      // ==================== Intersection Observer for Animations ====================
+      class ScrollAnimations {
+        constructor() {
+          this.init();
+        }
+
+        init() {
+          const options = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          };
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+              }
+            });
+          }, options);
+
+          document
+            .querySelectorAll(".service-card, .project-card")
+            .forEach((el) => {
+              el.style.opacity = "0";
+              el.style.transform = "translateY(20px)";
+              el.style.transition = "all 0.6s ease";
+              observer.observe(el);
+            });
+        }
+      }
+
+      // ==================== Smooth Scroll Enhancement ====================
+      class SmoothScroll {
+        constructor() {
+          this.init();
+        }
+
+        init() {
+          document.querySelectorAll('a[href^="#"]').forEach((link) => {
+            link.addEventListener("click", (e) => {
+              const target = document.querySelector(link.getAttribute("href"));
+              if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: "smooth" });
+              }
+            });
+          });
+        }
+      }
+
+      // ==================== Initialize App ====================
+      document.addEventListener("DOMContentLoaded", () => {
+        new ThemeManager();
+        new MenuManager();
+        new FormManager();
+        new ScrollAnimations();
+        new SmoothScroll();
+      });
+
+      // ==================== Performance Monitoring ====================
+      if (window.performance && window.performance.timing) {
+        window.addEventListener("load", () => {
+          const perfData = window.performance.timing;
+          const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+          console.log("Page load time: " + pageLoadTime + "ms");
+        });
+      }
+    </script>
+  </body>
+</html>

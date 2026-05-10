@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>MACIO — Enterprise Dashboards & Web Apps</title>
+
+    <meta
+      name="description"
+      content="Modern enterprise dashboards, web apps, landing pages, and scalable digital solutions by Shaik Mujeeb."
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='8' y='8' width='14' height='48' fill='%231a1a2e' rx='2'/%3E%3Crect x='26' y='8' width='14' height='48' fill='%231a1a2e' rx='2'/%3E%3Crect x='44' y='20' width='12' height='36' fill='%230f766e' rx='2'/%3E%3C/svg%3E"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+
+    <script defer src="app.js"></script>
+  </head>
+
+  <body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="blur blur-1"></div>
+    <div class="blur blur-2"></div>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+      <div class="container navbar-content">
+        <a href="#" class="logo">
+          <svg
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+          >
+            <rect
+              x="8"
+              y="8"
+              width="14"
+              height="48"
+              fill="currentColor"
+              rx="2"
+            />
+            <rect
+              x="26"
+              y="8"
+              width="14"
+              height="48"
+              fill="currentColor"
+              rx="2"
+            />
+            <rect x="44" y="20" width="12" height="36" fill="#0f766e" rx="2" />
+          </svg>
+          MACIO
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a
+            href="MACIO_Studio_Website.html"
+            class="icon-btn"
+            title="Switch to Enterprise Variant"
+            aria-label="Switch to enterprise variant"
+          >
+            <i data-lucide="layers"></i>
+          </a>
+
+          <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+            <i data-lucide="moon"></i>
+          </button>
+
+          <button
+            class="icon-btn menu-btn"
+            id="menuToggle"
+            aria-label="Toggle menu"
+          >
+            <i data-lucide="menu"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content reveal-left">
+          <div class="hero-badge">
+            <i data-lucide="sparkles"></i>
+            Enterprise Solutions
+          </div>
+
+          <h1 class="hero-title">
+            Enterprise Dashboards
+            <span>& Web Experiences</span>
+          </h1>
+
+          <p class="hero-description">
+            Building scalable dashboards, modern landing pages, enterprise
+            systems, and premium web applications with modern UI/UX.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary"> Start Project </a>
+
+            <a href="#projects" class="btn btn-secondary"> View Work </a>
+          </div>
+        </div>
+
+        <div class="hero-image reveal-right">
+          <img
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop"
+            alt="Dashboard Preview"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-label">SERVICES</span>
+          <h2>Solutions Built For Modern Businesses</h2>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <i data-lucide="monitor-smartphone"></i>
+            </div>
+
+            <h3>Web Applications</h3>
+
+            <p>
+              Scalable web apps using React, TypeScript, Node.js, and cloud
+              infrastructure.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <i data-lucide="layout-template"></i>
+            </div>
+
+            <h3>Landing Pages</h3>
+
+            <p>
+              Fast and conversion-focused landing pages with smooth animations
+              and SEO optimization.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <i data-lucide="chart-column"></i>
+            </div>
+
+            <h3>Enterprise Dashboards</h3>
+
+            <p>
+              Interactive dashboards for analytics, Veeva CRM, and Salesforce
+              ecosystems.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <i data-lucide="rocket"></i>
+            </div>
+
+            <h3>SEO & Hosting</h3>
+
+            <p>
+              Optimized deployment pipelines, SEO improvements, and performance
+              monitoring.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <i data-lucide="briefcase-business"></i>
+            </div>
+
+            <h3>Portfolio Websites</h3>
+
+            <p>
+              Modern personal and business portfolios that create a premium
+              first impression.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <i data-lucide="wrench"></i>
+            </div>
+
+            <h3>Maintenance</h3>
+
+            <p>
+              Long-term maintenance, feature upgrades, bug fixes, and technical
+              support.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-image reveal-left">
+          <img
+            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
+            alt="Developer Workspace"
+          />
+        </div>
+
+        <div class="about-content reveal-right">
+          <span class="section-label">ABOUT</span>
+
+          <h2>Building Modern Experiences With Performance In Mind</h2>
+
+          <p>
+            I'm Shaik Mujeeb — a software engineer passionate about enterprise
+            dashboards, scalable front-end systems, and clean user experiences.
+          </p>
+
+          <p>
+            I specialize in building modern interfaces for enterprise clients,
+            dashboards, SaaS platforms, and high-performance websites.
+          </p>
+
+          <div class="skills-grid">
+            <span>React</span>
+            <span>Node.js</span>
+            <span>AWS</span>
+            <span>TypeScript</span>
+            <span>Veeva CRM</span>
+            <span>Salesforce</span>
+            <span>Svelte</span>
+            <span>Performance</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-label">PROJECTS</span>
+          <h2>Recent Work</h2>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div class="project-image">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop"
+                alt="Analytics Dashboard"
+              />
+            </div>
+
+            <div class="project-content">
+              <h3>Enterprise Analytics Dashboard</h3>
+
+              <p>
+                Real-time analytics dashboard with performance tracking and data
+                visualization.
+              </p>
+
+              <div class="project-tags">
+                <span>React</span>
+                <span>Charts</span>
+                <span>Analytics</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-image">
+              <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop"
+                alt="Developer Setup"
+              />
+            </div>
+
+            <div class="project-content">
+              <h3>SaaS Landing Platform</h3>
+
+              <p>
+                Modern landing page with animations, SEO optimization, and
+                responsive layouts.
+              </p>
+
+              <div class="project-tags">
+                <span>Next.js</span>
+                <span>SEO</span>
+                <span>UI/UX</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-image">
+              <img
+                src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1200&auto=format&fit=crop"
+                alt="Dashboard Interface"
+              />
+            </div>
+
+            <div class="project-content">
+              <h3>CRM Reporting System</h3>
+
+              <p>
+                Enterprise CRM reporting system with scalable architecture and
+                fast performance.
+              </p>
+
+              <div class="project-tags">
+                <span>Veeva</span>
+                <span>CRM</span>
+                <span>Performance</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+
+    <section class="cta-section reveal">
+      <div class="container cta-box">
+        <div>
+          <h2>Have A Project In Mind?</h2>
+          <p>Let's build something modern, scalable, and visually premium.</p>
+        </div>
+
+        <a href="#contact" class="btn btn-primary"> Contact Me </a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-label">CONTACT</span>
+          <h2>Let's Work Together</h2>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm">
+          <div class="success-message" id="successMessage">
+            Message sent successfully.
+          </div>
+
+          <div class="input-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="input-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="input-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required />
+          </div>
+
+          <div class="input-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary form-btn">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <h3>MACIO</h3>
+          <p>
+            Premium enterprise dashboards, web apps, and digital experiences.
+          </p>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Social</h4>
+
+          <div class="social-links">
+            <a
+              href="https://github.com/mujeebshk"
+              title="GitHub"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                ></path>
+              </svg>
+            </a>
+
+            <a
+              href="https://linkedin.com/in/mujeebshaik-in"
+              title="LinkedIn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+
+            <a
+              href="https://twitter.com/macio_dev"
+              title="Twitter"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.2-18 11.6 7.2.1 10.2-4.1 10.2-4.1-9.4 0-10.2-8.2-10.2-8.2 3 0 3.7 1 3.7 1-10.4 0-10.2-9.1-10.2-9.1 2.8 1.1 4.5 1.1 4.5 1.1-6-7.8 1.1-10.3 1.1-10.3 8.3 10.1 18.6 10.1 18.6 10.1z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">© 2026 MACIO — Built by Mujeeb</div>
+    </footer>
+
+    <!-- WHATSAPP -->
+
+    <a href="https://wa.me/918520930031" class="whatsapp-btn" target="_blank">
+      <i data-lucide="message-circle"></i>
+    </a>
+  </body>
+</html>
