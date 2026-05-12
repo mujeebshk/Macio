@@ -27,7 +27,6 @@ MACIO is a high-performance portfolio platform showcasing specialized web soluti
 - `MACIO_Studio_Website.html`: The specialized enterprise/service variant.
 - `app.js` / `style.css`: Core logic and styling for the main variant.
 - `scripts.js` / `styles.css`: Specialized logic and styling for the Studio variant.
-- `.github/workflows/deploy.yml`: Automated deployment configuration.
 
 ## 🌐 Deployment
 
