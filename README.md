@@ -2,6 +2,12 @@
 
 MACIO is a high-performance portfolio platform showcasing specialized web solutions for enterprise environments. It demonstrates expertise in building scalable dashboards, modern landing pages, and premium web applications with a focus on clean UI/UX and robust performance.
 
+## 🌐 Live Demo
+
+🔗 **Visit Live Website:**  
+https://mujeebshk.github.io/Macio/
+
+
 ## 🚀 Features
 
 - **Dual-Variant Architecture**: Includes two distinct website designs—a modern "Glassmorphism" main variant and a professional "Studio/Enterprise" variant.
@@ -28,9 +34,10 @@ MACIO is a high-performance portfolio platform showcasing specialized web soluti
 - `app.js` / `style.css`: Core logic and styling for the main variant.
 - `scripts.js` / `styles.css`: Specialized logic and styling for the Studio variant.
 
-## 🌐 Deployment
 
-The project is configured for GitHub Pages. Any changes pushed to the `main` branch trigger the `.github/workflows/deploy.yml` action, which automatically builds and deploys the site.
+## 🚀 Deployment
+
+The project is configured for GitHub Pages. Any changes pushed to the `main` branch trigger action, which automatically builds and deploys the site.
 
 ---
 
